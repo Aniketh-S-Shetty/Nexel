@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Calculator</title>
+<script type="text/javascript">
+var x, y;
+function get_value()
+{
+  x = parseInt(document.getElementById("first_number").value);
+  y = parseInt(document.getElementById("second_number").value);
+}
+function add()
+{
+  get_value();
+  var sum = x + y;
+  document.getElementById("resu").value = sum;
+}
+function sub()
+{
+  get_value();
+  var sub = x - y;
+  document.getElementById("resu").value = sub;
+}
+function mul()
+{
+  get_value();
+  var mul = x * y;
+  document.getElementById("resu").value = mul;
+}
+function div()
+{
+  get_value();
+  var div = x/y;
+  document.getElementById("resu").value = div;
+} 
+function addToDisplay(value)
+{
+  document.calculator.display.value += value;
+}
+function calculate()
+{
+  try{
+    document.calculator.display.value = eval(document.calculator.display.value);
+  } 
+  catch (error){
+    document.calculator.display.value = 'Error';
+  }
+}
+function clearDisplay() 
+{
+  document.calculator.display.value = '';
+}
+</script>
+<style type = "text/css">
+   input {
+     width: 50px;
+     padding: 5px;
+     margin: 5px;
+   }
+   .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px;
+   }
+   .online
+   {  
+     justify-content:center;
+     width:450px;
+     font-size:16px;
+     background:lightblue;
+     padding:30px 30px 15px 30px;
+     border:5px solid blue;
+   }
+   .simple
+   { 
+     float:right;
+     justify-content:center;
+     width:450px;
+     font-size:16px;
+     background:lightblue;
+     padding:30px 30px 15px 30px;
+     border:5px solid blue;
+    }
+</style>
+</head>
+<body>
+<div class="grid">
+<div class="online">
+<table>
+<h1> Online Calculator </h1>
+<tr>
+<td> Enter first number:</td>
+<!-- Get first input -->
+<td><input type = "text" id = "first_number" required/></td>
+<br>
+<tr>
+<!-- Get second input -->
+<td> Enter second number </td>
+<td><input type = "text" id = "second_number" required/></td>
+</tr>
+</tr>
+</table>
+<br>
+<!-- Function for addition -->
+<button onclick = "add()">Add</button>
+<!-- Function for subtraction -->
+<button onclick = "sub()">Subtract</button>
+<!-- Function for multiplication -->
+<button onclick = "mul()">Multiply</button>
+<!-- Function for division -->
+<button onclick = "div()">Divide</button>
+<br><br>
+<!-- For showing result -->
+<input type = "text" id = "resu"/>
+</div>
+<div class="simple">
+<h2>Simple Calculator</h2>
+
+<form name="calculator">
+    <input type="text" name="display" id="display" disabled>
+    <br>
+    <input type="button" value="7" onclick="addToDisplay('7')">
+    <input type="button" value="8" onclick="addToDisplay('8')">
+    <input type="button" value="9" onclick="addToDisplay('9')">
+    <input type="button" value="/" onclick="addToDisplay('/')">
+    <br>
+    <input type="button" value="4" onclick="addToDisplay('4')">
+    <input type="button" value="5" onclick="addToDisplay('5')">
+    <input type="button" value="6" onclick="addToDisplay('6')">
+    <input type="button" value="-" onclick="addToDisplay('-')">
+    <br>
+    <input type="button" value="1" onclick="addToDisplay('1')">
+    <input type="button" value="2" onclick="addToDisplay('2')">
+    <input type="button" value="3" onclick="addToDisplay('3')">
+    <input type="button" value="+" onclick="addToDisplay('+')">
+    <br>
+    <input type="button" value="0" onclick="addToDisplay('0')">
+    <input type="button" value="." onclick="addToDisplay('.')">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="C" onclick="clearDisplay()">
+</form>
+</div>
+</body>
+</html>
+
+
+
+ 

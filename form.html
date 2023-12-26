@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interactive form validation</title>
+  <style type = "text/css">
+  .center
+  {
+    justify-content:center;
+    margin-left:500px;
+    width:450px;
+    font-size:16px;
+    background:lightblue;
+    padding:30px 30px 15px 30px;
+    border:5px solid blue;
+  }
+  </style> 
+</head>
+<body>
+<h1 style = "text-align:center; color:blue;"><u>FORM</u></h1>
+<div class = "center" style = "display:flex">
+<form id = "myForm">
+<label for = "name">NAME:</label>
+<input type = "text" id = "name" placeholder = "NAME" required>
+<br><br>
+<label for = "email">EMAIL:</label>
+<input type = "text" id = "email" placeholder = "EMAIL" required>
+<br><br>
+<label= "mobileno">MOBILENO:</label>
+<input type = "text" id = "mobileno" placeholder = "MOBILENO" required>
+<br><br>
+<label>GENDER:</label>
+<input type = "radio" id = "male" name = "gender" value = "male">
+<label for = "male">MALE</label>
+<input type = "radio" id = "female" name = "gender" value = "female">
+<label for = "female">FEMALE</label>
+<br><br>
+<textarea id = "area" cols = "40" rows = "10"></textarea>
+<br><br>
+<input type = "reset" value = "RESET">
+<input type = "button" value = "SUBMIT" onclick = "myFunction()"><br><br>
+<p id="message"></p>
+</form>
+</div>
+<script>
+function myFunction()
+{
+  var x = document.getElementById("myForm");
+  var txt = "";
+  var i;
+  for(i=0;i<3;i++)
+  {
+    txt = txt + x.elements[i].value + " ";
+  }
+  if(document.getElementById('male').checked)
+  {
+    txt = txt + document.getElementById('male').value;
+  }
+  else
+  {
+    txt = txt + document.getElementById('female').value;
+  }
+  document.getElementById('area').value = txt;
+  showMessage();
+}
+function showMessage()
+{
+  var form = document.getElementById("myForm");
+  event.preventDefault();
+  alert("Hi " + form.elements.name.value + ". Your response has been recorded. We will reach you sooner on " + form.elements.mobileno.value + ".");
+}
+</script>
+</body>
+</html>
